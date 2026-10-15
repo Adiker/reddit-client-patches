@@ -1,10 +1,12 @@
-# 👋🧩 Patcheddit
+# Reddit Client Patches
 
 Morphe compatible patches for third party Reddit apps.
 
 ## ❓ About
 
-Patcheddit is a Morphe compatible patch bundle that supports patching the OAuth login information for 3rd party reddit apps.
+Reddit Client Patches is an independently published Morphe patch source maintained by Adiker, based on [wchill/patcheddit](https://github.com/wchill/patcheddit) 1.4.0. It includes the fix for Infinity for Reddit+ 8.3.0: the Spoof client patch now recognizes the moved subscription activity call while retaining support for older builds.
+
+This app uses code from Patcheddit. To learn more, visit https://reddit.com/r/patcheddit
 
 In addition, patches for some apps contain additional features that were not present in ReVanced.
 
@@ -42,7 +44,9 @@ In addition, patches for some apps contain additional features that were not pre
 ## 🚀 Get started
 
 1. Install [Morphe Manager](https://morphe.software/) and switch it to advanced/expert mode.
-2. Click [this link](https://morphe.software/add-source?github=wchill/patcheddit) to add this patch source to Morphe Manager.
+2. Click [Add Reddit Client Patches to Morphe](https://morphe.software/add-source?github=Adiker/reddit-client-patches&name=Reddit%20Client%20Patches), or open **Sources → + → Remote** and enter `https://github.com/Adiker/reddit-client-patches`.
+   * The root `patches-bundle.json` points to this repository's own stable `.mpp` release. Remote sources can update automatically; no local file import is necessary.
+   * If you also have the original source installed, choose **Reddit Client Patches** for Infinity+ so you use this fix. Leave pre-release patches disabled; this source publishes stable releases only.
 3. In Morphe Manager, find the app you want to patch.
    * The supported apps are Boost, RIF, Sync, Relay, BaconReader, Joey, Infinity+, Continuum, and the cygnusx1 fork of Slide.
 4. Get the APK for your preferred, supported 3rd party reddit app. If you don't have it, you can download it from in the app. APKM bundles (aka split APKs) will also work.
@@ -55,7 +59,7 @@ In addition, patches for some apps contain additional features that were not pre
    * Make sure that the redirect URI in `Spoof client` options and on https://www.reddit.com/prefs/apps/ match. If you don't know what to set the redirect URI/user agent to, use the values from `What if I don't have a client ID?`
 6. Once patching is complete, install the app and set it up as usual.
 
-For assistance with patching, please post a thread in [/r/Patcheddit](https://www.reddit.com/r/Patcheddit/) or [/r/MorpheApp](https://www.reddit.com/r/MorpheApp/). Only use the GitHub issue tracker for legitimate bug reports or feature requests.
+Report issues with this source in [this repository's issue tracker](https://github.com/Adiker/reddit-client-patches/issues). Include the Morphe version, app version, patch options (without private credentials), and patching log.
 
 ### What if I don't have a client ID?
 
@@ -115,18 +119,15 @@ I get a `null: null` error when I open the app
 
 ## 🧑‍💻 Development
 
-To develop and release Patcheddit, some things need to be considered:
+Development happens on `main`. Pull requests and release tags build the Android bundle in [GitHub Actions](.github/workflows/build.yml).
 
-- Development starts in feature branches. Once a feature branch is ready, it is squashed and merged into the `dev` branch
-- The `dev` branch is merged into the `main` branch once it is ready for release
-- Semantic versioning is used to version Patcheddit. Patcheddit has a public API for other patches to use
-- Semantic commit messages are used for commits
-- Commits on the `dev` branch and `main` branch are automatically released
-via the [release.yml](.github/workflows/release.yml) workflow, which is also responsible for generating the changelog
-and updating the version of Patcheddit. It is triggered by pushing to the `dev` or `main` branch.
-The workflow uses the `publish` task to publish the release of Patcheddit
-- The `buildAndroid` task is used to build Patcheddit so that it can be used on Android.
-The `publish` task depends on the `buildAndroid` task, so it will be run automatically when publishing a release.
+Build with a JDK 17, an Android SDK, and GitHub Packages credentials in `GITHUB_ACTOR` / `GITHUB_TOKEN`:
+
+```sh
+./gradlew :patches:buildAndroid --no-daemon
+```
+
+To publish a new version, update `version` in `gradle.properties` and `RELEASE_NOTES.md`, merge to `main`, and push a matching `vX.Y.Z` tag. Alternatively, run **Build and release** manually on `main`. The workflow builds and validates the `.mpp`, publishes it in this repository's Releases, and updates `patches-bundle.json` on `main` only after the release asset exists. No signing secrets or manual bundle uploads are required. Each release must use a new version number.
 
 ## 📚 Everything else
 
@@ -137,12 +138,12 @@ You can find the contribution guidelines [here](CONTRIBUTING.md).
 
 ### 🛠️ Building
 
-To build Patcheddit,
+To build Morphe patches,
 you can follow the [Morphe documentation](https://github.com/MorpheApp/morphe-documentation).
 
 ## 📜 License
 
-Patcheddit is licensed under the [GNU General Public License v3.0](LICENSE), with additional conditions under Section 7:
+This project uses code licensed under the [GNU General Public License v3.0](LICENSE), with additional conditions under Section 7:
 
 - **Attribution (7b):** Any use of this code, including derivatives, must display a visible notice:
 

@@ -1,4 +1,4 @@
-rootProject.name = "patcheddit"
+rootProject.name = "reddit-client-patches"
 
 pluginManagement {
     repositories {

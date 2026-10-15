@@ -35,7 +35,7 @@ fun spoofClientPatch(
         null,
         null,
         "OAuth client ID",
-        "The Reddit OAuth client ID. Refer to Patcheddit documentation for more " +
+        "The Reddit OAuth client ID. Refer to the Reddit Client Patches README for more " +
                 "information on what to put here.",
         true,
         validator = { value ->
@@ -53,7 +53,7 @@ fun spoofClientPatch(
         "redreader://rr_oauth_redir",
         null,
         "Redirect URI",
-        "The Reddit OAuth redirect URI. Refer to Patcheddit documentation for more " +
+        "The Reddit OAuth redirect URI. Refer to the Reddit Client Patches README for more " +
                 "information on what to put here. Default value is RedReader's redirect URI.",
         true,
     )
@@ -62,7 +62,7 @@ fun spoofClientPatch(
         "org.quantumbadger.redreader/1.25.1",
         null,
         "User agent",
-        "The app's user agent. Refer to Patcheddit documentation for more information " +
+        "The app's user agent. Refer to the Reddit Client Patches README for more information " +
                 "on what to put here. Default value is RedReader's user agent.",
         true
     )
