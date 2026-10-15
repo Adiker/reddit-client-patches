@@ -1,3 +1,15 @@
+# [1.4.1](https://github.com/Adiker/reddit-client-patches/releases/tag/v1.4.1) (2026-10-15)
+
+### Bug Fixes
+
+* Infinity for Reddit+ 8.3.0: match the moved subscription activity call in the Spoof client patch, retaining the legacy match for older builds.
+
+### Source Distribution
+
+* Publish Reddit Client Patches as an independent Morphe source with its own Android bundle, release metadata, and automatic remote updates.
+
+This app uses code from Patcheddit. To learn more, visit https://reddit.com/r/patcheddit
+
 # [1.4.0](https://github.com/wchill/patcheddit/compare/v1.3.1...v1.4.0) (2026-04-07)
 
 
